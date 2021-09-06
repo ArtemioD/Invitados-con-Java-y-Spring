@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlms:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        
+        <!-- ******************* header ******************* -->
+        
+        <header th:fragment="header">
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+                <div class="container">
+                    <a class="navbar-brand" th:href="@{/}">
+                        <i class="fas fa-clipboard-list text-white"></i> [[#{web.titulo}]]</a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
+                            <li class="nav-item mr-3 nav-link">
+                                <i class="fas fa-user"></i>
+                                <span th:text="#{barra.bienvenido}">bienvenido</span>
+                                <span sec:authentication="name">usuario</span>
+                            </li>
+                            <li class="nav-item">
+                                <form th:action="@{/logout}" method="post">
+                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                                        <i class="fas fa-power-off"></i> [[#{accion.salir}]]
+                                    </a>
+                                </form>
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <section id="main-header" style="background-color: hotpink" class="py-2 text-white">
+                <!-- hotpink,  -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>
+                                <i class="fas fa-glass-cheers"></i>
+                                [[#{web.invitados}]]
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
+        
+        <!-- ******************* footer ******************* -->
+        
+        <footer th:fragment="footer" class="bg-dark mt-5 p-1">
+            <div class="container">
+                <div class="col">
+                    <p class="lead text-center text-white">
+                        <a th:href="@{''(lang=es)}">ES</a> / 
+                        <a th:href="@{''(lang=en)}">EN</a> |
+                        &copy; Copyright <span th:text='${fecha}'></span> [[#{web.pie-pagina}]]
+                    </p>
+                </div>
+            </div>
+        </footer>
+        
+    </body>
+</html>

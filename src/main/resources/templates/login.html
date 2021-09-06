@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!-- Archivo Bootstrap 4 CSS -->
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <!-- Archivo Font Awesome CSS -->
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <!-- Archivos Bootstrap 4 JS -->
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+
+        <header th:replace="layout/plantilla :: header"></header>
+
+        <section id="actions" class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <!-- agregar botones --> 
+                </div>
+            </div>   
+        </section>
+
+        <section id="login">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="text-center">Login</h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/login}" method="post">
+                                    <div class="form-group">
+                                        <label for="username"><strong><i class="fas fa-user-alt"></i> Username:</strong></label>
+                                        <input class="form-control" type="text" name="username" id="username" required=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password"><strong><i class="fas fa-key"></i> Password:</strong></label>
+                                        <input class="form-control" type="password" name="password" id="password" required=""/>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        <i class="fas fa-sign-in-alt"></i> Login
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+        <footer th:replace="layout/plantilla :: footer"></footer>
+
+    </body>
+</html>
